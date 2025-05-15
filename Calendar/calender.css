@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Cal Sans",sans-serif;
+    box-sizing: border-box;
+    
+}
+
+
+.welcome-typewriter {
+    text-align: center;
+    background-color: tomato;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #333;
+    width: fit-content;
+    max-width: 100%;
+    padding: 10px;
+    margin-left: 25%;
+}
+
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .welcome-typewriter {
+        font-size: 14px;
+        /* Adjust font size for smaller screens */
+        margin-left: 10%;
+        /* Reduce left margin for better fit on small screens */
+        padding: 8px;
+        /* Less padding for smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .welcome-typewriter {
+        font-size: 12px;
+        /* Further reduce font size for very small screens */
+        margin-left: 5%;
+        /* Even smaller margin for very small screens */
+        padding: 6px;
+        /* Less padding */
+    }
+}
+
+
+/* Table Styling */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    /* Ensures there is no spacing between borders */
+}
+
+th,
+td {
+    text-align: center;
+    padding: 10px;
+    vertical-align: middle;
+    border: 2px solid #ddd;
+    /* Adds a border around each cell */
+    transition: all 0.3s ease;
+    /* Smooth transition for interaction */
+}
+
+/* Header Styling */
+thead {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+    /* Adds a border below the header */
+}
+
+/* Data Cell Styling */
+td {
+    background-color: #ffffff;
+}
+
+/* Hover effect on table cells */
+td:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+    /* Change cursor to indicate interactivity */
+}
+
+/* Focus effect for user touch interaction */
+td:active {
+    background-color: #e0e0e0;
+    /* Change background color when the user clicks/touches */
+    border: 2px solid #ff5722;
+    /* Add border color on active (touch/click) */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+
+    th,
+    td {
+        font-size: 14px;
+        /* Reduce font size on smaller screens */
+        padding: 8px;
+        /* Less padding for smaller screens */
+    }
+
+    table {
+        overflow-x: auto;
+        /* Enables horizontal scrolling for large tables */
+        -webkit-overflow-scrolling: touch;
+        /* For smoother scrolling on mobile devices */
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    th,
+    td {
+        font-size: 12px;
+        /* Further reduce font size on very small screens */
+        padding: 6px;
+        /* Less padding on very small screens */
+    }
+}

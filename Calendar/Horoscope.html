@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ne">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horoscope | राशिफल</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .horoscope-widget {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .horoscope-widget h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .signs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .sign {
+            background: #e3f2fd;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .sign:hover {
+            background: #bbdefb;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1rem;
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 5px solid #ffc107;
+            display: none;
+            border-radius: 5px;
+        }
+
+        .result strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="horoscope-widget">
+        <h2>Horoscope | राशिफल</h2>
+        <div class="signs">
+            <div class="sign" onclick="showHoroscope('मेष')">Aries<br>मेष</div>
+            <div class="sign" onclick="showHoroscope('वृष')">Taurus<br>वृष</div>
+            <div class="sign" onclick="showHoroscope('मिथुन')">Gemini<br>मिथुन</div>
+            <div class="sign" onclick="showHoroscope('कर्कट')">Cancer<br>कर्कट</div>
+            <div class="sign" onclick="showHoroscope('सिंह')">Leo<br>सिंह</div>
+            <div class="sign" onclick="showHoroscope('कन्या')">Virgo<br>कन्या</div>
+            <div class="sign" onclick="showHoroscope('तुला')">Libra<br>तुला</div>
+            <div class="sign" onclick="showHoroscope('वृश्चिक')">Scorpio<br>वृश्चिक</div>
+            <div class="sign" onclick="showHoroscope('धनु')">Sagittarius<br>धनु</div>
+            <div class="sign" onclick="showHoroscope('मकर')">Capricorn<br>मकर</div>
+            <div class="sign" onclick="showHoroscope('कुम्भ')">Aquarius<br>कुम्भ</div>
+            <div class="sign" onclick="showHoroscope('मीन')">Pisces<br>मीन</div>
+        </div>
+        <div class="result" id="horoscope-result"></div>
+    </div>
+
+    <script>
+        const horoscopes = {
+            'मेष': {
+                en: 'Your confidence will grow today. New opportunities are coming your way.',
+                np: 'आज तपाईंको आत्मविश्वास बढ्नेछ। नयाँ अवसरहरू पाइनेछन्।'
+            },
+            'वृष': {
+                en: 'Think carefully before making decisions. Financial gains are possible.',
+                np: 'धेरै सोचेर निर्णय गर्नु उपयुक्त हुनेछ। आर्थिक लाभको सम्भावना छ।'
+            },
+            'मिथुन': {
+                en: 'You may face misunderstandings with friends. Stay calm.',
+                np: 'मित्रसँग विवाद हुन सक्छ। संयमित रहनुहोस्।'
+            },
+            'कर्कट': {
+                en: 'Family happiness is likely. New plans will succeed.',
+                np: 'पारिवारिक सुख प्राप्त हुनेछ। नयाँ योजना सफल हुनेछ।'
+            },
+            'सिंह': {
+                en: 'Progress in creativity and arts. Confidence will rise.',
+                np: 'कला र सिर्जनात्मकतामा प्रगति हुनेछ। आत्मविश्वास बढ्नेछ।'
+            },
+            'कन्या': {
+                en: 'Minor health issues may arise. Take care of your diet.',
+                np: 'स्वास्थ्यमा सामान्य समस्या आउन सक्छ। आहारमा ध्यान दिनुहोस्।'
+            },
+            'तुला': {
+                en: 'Improvements in love life. Peace of mind will prevail.',
+                np: 'प्रेम सम्बन्धमा सुधार हुनेछ। मानसिक शान्ति मिल्नेछ।'
+            },
+            'वृश्चिक': {
+                en: 'Promotion in job is possible. You will succeed in competition.',
+                np: 'नोकरीमा पदोन्नति मिल्न सक्छ। प्रतिस्पर्धामा सफलता मिल्नेछ।'
+            },
+            'धनु': {
+                en: 'Possibility of foreign travel. You will succeed in studies.',
+                np: 'विदेश यात्राको सम्भावना छ। अध्ययनमा सफलता मिल्नेछ।'
+            },
+            'मकर': {
+                en: 'Solve problems using wisdom.',
+                np: 'बुद्धिको प्रयोग गरी समस्याको समाधान गर्नुहोस्।'
+            },
+            'कुम्भ': {
+                en: 'Invest wisely. Friends will support you.',
+                np: 'नयाँ लगानी सोचेर गर्नुहोस्। साथीहरूको सहयोग मिल्नेछ।'
+            },
+            'मीन': {
+                en: 'Interest in spiritual work will increase. Inner strength will grow.',
+                np: 'धार्मिक कार्यमा रुचि बढ्नेछ। आत्मबल उच्च रहनेछ।'
+            }
+        };
+
+        function showHoroscope(sign) {
+            const resultBox = document.getElementById('horoscope-result');
+            const data = horoscopes[sign];
+            if (data) {
+                resultBox.innerHTML = `<strong>EN:</strong> ${data.en}<br><strong>NP:</strong> ${data.np}`;
+                resultBox.style.display = 'block';
+            } else {
+                resultBox.innerText = 'Horoscope not available / राशिफल उपलब्ध छैन।';
+                resultBox.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
